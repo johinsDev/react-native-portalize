@@ -23,7 +23,8 @@ export const Host = ({ children, style }: IHostProps): JSX.Element => {
     key: number;
     children?: React.ReactNode;
   }[] = [];
-  let nextKey = 0;
+
+  const keys: number[] = [];
 
   React.useEffect(() => {
     while (queue.length && managerRef.current) {
@@ -45,8 +46,12 @@ export const Host = ({ children, style }: IHostProps): JSX.Element => {
     }
   }, []);
 
+  const getRandomInt = (min: number, max: number): number =>
+    Math.floor(Math.random() * Math.floor(max)) + min;
+
   const mount = (children: React.ReactNode): number => {
-    const key = nextKey++;
+    const key = getRandomInt(0, 1000000000);
+    keys.push(key);
 
     if (managerRef.current) {
       managerRef.current.mount(key, children);
