@@ -36,7 +36,12 @@ export const Manager = React.forwardRef((_, ref): any => {
   );
 
   return portals.map(({ key, children }) => (
-    <View key={key} collapsable={false} pointerEvents="box-none" style={StyleSheet.absoluteFill}>
+    <View
+      key={`portalize_portal_${key}`}
+      collapsable={false}
+      pointerEvents="box-none"
+      style={StyleSheet.absoluteFill}
+    >
       {children}
     </View>
   ));
