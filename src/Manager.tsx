@@ -35,7 +35,7 @@ export const Manager = React.forwardRef((_, ref): any => {
     }),
   );
 
-  return portals.map(({ key, children }, index) => (
+  return portals.map(({ children }, index) => (
     <View
       key={`${index}`}
       collapsable={false}
